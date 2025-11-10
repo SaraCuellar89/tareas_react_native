@@ -14,7 +14,7 @@ export default function RenderItem({ item, markDone, deleteFunction }: intemProp
         <View>
             <TouchableOpacity onPress={markDone}>
                 <Text style={item.done ? estilos.textDone : estilos.text}>{item.title}</Text>
-                <Text>{item.date.toDateString()}</Text>
+                <Text>{new Date(item.date).toDateString()}</Text>
             </TouchableOpacity>
             {
                 item.done && 

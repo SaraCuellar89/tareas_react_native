@@ -21,17 +21,36 @@ const estilos = StyleSheet.create({
     },
     inputcontainer: {
         marginTop: 20,
-        flexDirection: 'row',
-        justifyContent: 'space-between'
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: 10,
     },
-    boton: {
+    caja_tarea: {
+        flexDirection: 'row',
+        gap: 10,
+    },
+    boton_fecha: {
         backgroundColor: '#5897fb',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 15,
         width: Dimensions.get('screen').width * 0.25,
         // Añadí algo de padding para que el texto no quede muy apretado
-        paddingVertical: 10
+        paddingVertical: 5
+    },
+    boton: {
+        backgroundColor: '#5b1515ff',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 15,
+        width: Dimensions.get('screen').width * 0.70,
+        // Añadí algo de padding para que el texto no quede muy apretado
+        paddingVertical: 10,
+        marginBottom: 20
+    },
+    texto_boton: {
+        color: 'white',
     },
     itemcointaner:{
         paddingVertical: 20,
