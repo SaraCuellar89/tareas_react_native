@@ -73,6 +73,55 @@ const estilos = StyleSheet.create({
     },
     removeText:{
         color: 'white'
+    },
+
+
+
+    
+    contenedor_formulario:{
+        width:'100%',
+        height: '70%',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        padding: 20,
+    },
+    titulo_formulario:{
+        width:'100%',
+        textAlign: 'center',
+        padding: 20,
+        fontSize: 30
+    },
+    caja_formulario:{
+        width:'80%',
+        justifyContent: 'space-around',
+        padding: 20,
+        borderRadius: 10,
+        borderColor: 'grey',
+        borderWidth: 2
+    },
+    label_fomulario:{
+        textAlign: 'center',
+        paddingVertical: 20,
+        fontSize: 20,
+    },
+    input_formulario:{
+        backgroundColor: 'white',
+        borderColor: '#6f6f6f',
+        borderWidth: 1,
+        borderRadius: 15,
+        paddingVertical: 5,
+        fontSize: 20,
+    },
+    boton_formulario:{
+        marginTop: 20,
+        backgroundColor: 'darkred',
+        borderRadius: 15,
+        paddingVertical: 5
+    },
+    texto_boton_formulario:{
+        color: 'white',
+        fontSize: 20,
+        textAlign: 'center'
     }
 })
 

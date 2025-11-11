@@ -12,6 +12,7 @@ import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 import Tablero from './Componentes/Tablero';
+import Inicio_Sesion from './Pages/Inicio_Sesion';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -29,7 +30,7 @@ function AppContent() {
 
   return (
     <View style={styles.container}>
-      <Tablero/>
+      <Inicio_Sesion/>
     </View>
   );
 }
