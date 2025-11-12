@@ -13,6 +13,7 @@ import {
 } from 'react-native-safe-area-context';
 import Tablero from './Componentes/Tablero';
 import Inicio_Sesion from './Pages/Inicio_Sesion';
+import Registro from './Pages/Registro'
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';

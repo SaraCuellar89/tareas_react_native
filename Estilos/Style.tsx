@@ -78,12 +78,16 @@ const estilos = StyleSheet.create({
 
 
     
+    imagen_fondo:{
+        width:'100%',
+        height: '100%'
+    },
     contenedor_formulario:{
         width:'100%',
-        height: '70%',
-        justifyContent: 'space-around',
+        height: '100%',
+        justifyContent: 'center',
         alignItems: 'center',
-        padding: 20,
+        padding: 20
     },
     titulo_formulario:{
         width:'100%',
@@ -93,6 +97,7 @@ const estilos = StyleSheet.create({
     },
     caja_formulario:{
         width:'80%',
+        backgroundColor: 'white',
         justifyContent: 'space-around',
         padding: 20,
         borderRadius: 10,
