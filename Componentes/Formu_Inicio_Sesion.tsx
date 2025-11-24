@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Text, TextInput, TouchableOpacity, View, ImageBackground } from "react-native";
+import { Alert } from "react-native";
 import estilos from "../Estilos/Style";
-import { Picker } from "@react-native-picker/picker";
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../Pages/App';
@@ -12,11 +12,31 @@ const Formu_Inicio_Sesion = () => {
 
     const navigation = useNavigation<navigationProp>();
 
-    const [miembro, setMiembro] = useState('')
-    const [nombre, setNombre] = useState('')
+    const [correo, setCorreo] = useState('');
+    const [contrasena, setContrasena] = useState('');
 
-    const Imprimir = () => {
-        navigation.navigate('Tablero');
+    const Iniciar_Sesion = async () => {
+        try{
+            const res = await fetch('https://backend-aplicacion-movil.vercel.app/inicio_sesion', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({correo, contrasena})
+            })
+
+            const datos = await res.json()
+
+            if (!datos.success) {
+                return Alert.alert("Error", "No se pudo iniciar sesion");
+            }
+
+            Alert.alert("Éxito", "Inicio de Sesion exitoso");
+            navigation.navigate('Tablero');
+        }
+        catch(error){
+            console.error('Error: ' + error)
+        }
     }
 
     return(
@@ -27,21 +47,15 @@ const Formu_Inicio_Sesion = () => {
                 <View style={estilos.caja_formulario}>
                     <View>
                         <Text style={estilos.label_fomulario}>Nombre de Usuario</Text>
-                        <TextInput style={estilos.input_formulario} value={nombre} onChangeText={text => setNombre(text)}/>
+                        <TextInput style={estilos.input_formulario} value={correo} onChangeText={setCorreo}/>
                     </View>
 
                     <View>
                         <Text style={estilos.label_fomulario}>Contraseña</Text>
-                        <TextInput style={estilos.input_formulario}/>
+                        <TextInput style={estilos.input_formulario} value={contrasena} onChangeText={setContrasena}/>
                     </View>
 
-                    {/* Lista Desplegable */}
-                    <Picker selectedValue={miembro} onValueChange={setMiembro}>
-                        <Picker.Item label="Usuario" value="Usuario" />
-                        <Picker.Item label="Miembro" value="Miembro" />
-                    </Picker>
-
-                    <TouchableOpacity style={estilos.boton_formulario} onPress={Imprimir}>
+                    <TouchableOpacity style={estilos.boton_formulario} onPress={Iniciar_Sesion}>
                         <Text style={estilos.texto_boton_formulario}>
                             Entrar
                         </Text>
