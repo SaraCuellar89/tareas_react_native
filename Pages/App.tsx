@@ -17,12 +17,31 @@ const Stack = createStackNavigator<RootStackParamList>()
 const App = () => {
     return(
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Registro">
-                <Stack.Screen name="Inicio_Sesion" component={Inicio_Sesion}></Stack.Screen>
+            <Stack.Navigator initialRouteName="Inicio_Sesion">
+                <Stack.Screen 
+                    name="Inicio_Sesion" 
+                    component={Inicio_Sesion}
+                    options={{
+                        title: 'Inicio de Sesion'
+                    }}
+                ></Stack.Screen>
 
-                <Stack.Screen name="Registro" component={Registro}></Stack.Screen>
+                <Stack.Screen 
+                    name="Registro" 
+                    component={Registro}
+                    options={{
+                        title: 'Registro'
+                    }}
+                    >
+                </Stack.Screen>
 
-                <Stack.Screen name="Tablero" component={Tablero}></Stack.Screen>
+                <Stack.Screen 
+                    name="Tablero" component={Tablero}
+                    options={{ 
+                        headerLeft: () => null,// NO flecha
+                        title: 'Lista de Tareas'
+                    }} >
+                </Stack.Screen>
             </Stack.Navigator>
         </NavigationContainer>
     )
