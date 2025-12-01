@@ -3,7 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from '@react-navigation/native';
 import Inicio_Sesion from "./Inicio_Sesion";
-import Tablero from "../Componentes/Tablero";
+import Tablero from "./Tablero";
 import Registro from "./Registro";
 
 export type RootStackParamList = {
@@ -17,12 +17,12 @@ const Stack = createStackNavigator<RootStackParamList>()
 const App = () => {
     return(
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Inicio_Sesion">
+            <Stack.Navigator initialRouteName="Tablero">
                 <Stack.Screen 
                     name="Inicio_Sesion" 
                     component={Inicio_Sesion}
                     options={{
-                        title: 'Inicio de Sesion'
+                        headerShown: false
                     }}
                 ></Stack.Screen>
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import estilos from "../Estilos/Style";
-import { Task } from "../Componentes/Tablero"
+import { Task } from "../Pages/Tablero"
 
 interface intemProps{
     item: Task,

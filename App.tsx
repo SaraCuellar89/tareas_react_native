@@ -11,7 +11,7 @@ import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
-import Tablero from './Componentes/Tablero';
+import Tablero from './Pages/Tablero';
 import Inicio_Sesion from './Pages/Inicio_Sesion';
 import Registro from './Pages/Registro'
 
