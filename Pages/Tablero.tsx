@@ -109,6 +109,8 @@ export default function Tablero() {
                         ...t,
                         date: new Date(t.date)
                     }));
+
+            setTasks(tasksWithDates);
            }
         }
         catch(error){
@@ -184,6 +186,8 @@ export default function Tablero() {
             const newDate = new Date(selected_date)
             newDate.setHours(selectedTime.getHours())
             newDate.setMinutes(selectedTime.getMinutes())
+            newDate.setSeconds(0)
+            newDate.setMilliseconds(0)
             setSelected_date(newDate)
         }
     }
@@ -200,6 +204,8 @@ export default function Tablero() {
             done: false,
             date: selected_date,
         }
+
+        console.log("Nueva tarea creada con fecha:", newTask.date.toString());
 
         const notificationId = await scheduleNotification(newTask);
 
@@ -219,6 +225,8 @@ export default function Tablero() {
             )
         }
     }
+
+    console.log(tasks)
 
     //Marcar tarea como finalizada
     const markDone = async (task: Task) => {
@@ -281,7 +289,36 @@ export default function Tablero() {
         })
     }
 
-    //Ir a inicio de Sesion
+    // Función para probar notificación inmediata
+const testNotification = async () => {
+    try {
+        // 1️⃣ Pedir permisos (especialmente importante en Android 13+)
+        await notifee.requestPermission();
+
+        // 2️⃣ Crear canal (si no existe, no se duplica)
+        const channelId = await notifee.createChannel({
+            id: 'test-channel',
+            name: 'Canal de prueba',
+            importance: 4,
+            vibration: true,
+        });
+
+        // 3️⃣ Mostrar notificación inmediata
+        await notifee.displayNotification({
+            title: '🚀 Notificación de prueba',
+            body: '¡Funciona!',
+            android: {
+                channelId,
+                smallIcon: 'ic_launcher', // Asegúrate que existe en res/drawable
+                color: '#4CAF50',
+            },
+        });
+
+        console.log('Notificación enviada ✅');
+    } catch (error) {
+        console.error('Error mostrando la notificación:', error);
+    }
+};
 
     return (
         <View style={estilos.container}> 
@@ -307,6 +344,10 @@ export default function Tablero() {
                     <Text style={estilos.texto_boton}>Agregar</Text>
                 </TouchableOpacity>
             </View>
+
+            <TouchableOpacity style={estilos.boton} onPress={testNotification}>
+    <Text style={estilos.texto_boton}>Probar Notificación</Text>
+</TouchableOpacity>
 
             <View>
                 <FlatList
